@@ -1,2 +1,2 @@
-# java-mission-control-nix
-Nix packaged Java Mission Control
+# Adoptium OpenJDK Java Mission Control
+This repository provides a Nix packaged instance of Adoptium OpenJDK Java Mission Control
