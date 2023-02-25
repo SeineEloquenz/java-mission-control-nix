@@ -44,4 +44,11 @@ in stdenv.mkDerivation rec {
     ln -s $out/jmc $out/bin/java-mission-control
     ln -s ${desktopItem}/share/applications $out/share/applications
   '';  
+
+  meta = with lib; {
+    description = "Java Flight Recorder and Profiler";
+    homepage = "https://adoptium.net/jmc/";
+    license = licenses.upl;
+    platforms = platforms.linux;
+  };
 }
