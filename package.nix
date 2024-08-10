@@ -6,6 +6,7 @@
 , makeWrapper
 , jdk
 , webkitgtk
+, gtk3
 , ... }:
 
 let
@@ -40,7 +41,8 @@ in stdenv.mkDerivation rec {
     cp -r $src/JDK\ Mission\ Control/* $out
     chmod +x $out/jmc
     wrapProgram "$out/jmc" \
-        --prefix LD_LIBRARY_PATH ':' "${libraryPath}"
+        --prefix LD_LIBRARY_PATH : "${libraryPath}" \
+        --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}"
     ln -s $out/jmc $out/bin/java-mission-control
     ln -s ${desktopItem}/share/applications $out/share/applications
   '';  
