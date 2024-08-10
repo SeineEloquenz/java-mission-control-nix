@@ -21,6 +21,7 @@ let
   };
 
   libraryPath = lib.makeLibraryPath [ webkitgtk ];
+  binPath = lib.makeBinPath [ jdk ];
 
 in stdenv.mkDerivation rec {
   pname = "java-mission-control";
@@ -42,6 +43,7 @@ in stdenv.mkDerivation rec {
     chmod +x $out/jmc
     wrapProgram "$out/jmc" \
         --prefix LD_LIBRARY_PATH : "${libraryPath}" \
+        --prefix PATH : "${binPath}" \
         --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}"
     ln -s $out/jmc $out/bin/java-mission-control
     ln -s ${desktopItem}/share/applications $out/share/applications
